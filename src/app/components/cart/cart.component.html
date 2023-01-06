@@ -1,0 +1,30 @@
+<div *ngIf="cart.cartItems.length>0" class="cart-panel">
+  <div class="cart-container">
+    <div *ngFor="let cartItem of cart.cartItems" class="cart-item-details">
+      <img [src]="cartItem.product.url" alt="{{cartItem.product.name}}">
+      <p>{{cartItem.product.name}}</p>
+      <p>{{cartItem.product.price | currency}}</p>
+      <form (ngSubmit)="updateCart(cartItem)">
+        <input class="number-input" name="quantity" required [(ngModel)]="quantity">
+        <br>
+        <button type="submit" class="btn btn-primary">Add to Cart</button>
+      </form>
+    </div>
+    <div>
+      <form>
+        <input>
+        <input>
+        <input>
+        <br>
+        <button type="submit" class="btn btn-primary">Add to Cart</button>
+      </form>
+    </div>
+  </div>
+</div>
+<div *ngIf="!(cart.cartItems.length>0)" class="empty-cart-message">
+  <p>Your cart is empty </p>
+  <br>
+  <a routerLink="/" class="back-link">Start shopping</a>
+</div>
+
+
