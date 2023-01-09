@@ -1,0 +1,24 @@
+<form #addressForm="ngForm" (ngSubmit)="submitEvent()" class="form-margin">
+  <div class="mb-3">
+    <label for="name" class="form-label">Full name</label>
+    <input id="name" name="name" class="form-control" type="text" required minlength="3" [minLength]="3" ngModel
+           placeholder="(minimum 3 characters)"
+           [(ngModel)]="address.name">
+  </div>
+  <div class="mb-3">
+    <label for="address" class="form-label">Address</label>
+    <input id="address" name="address" class="form-control" type="text" required minlength="6" [minLength]="6"
+           placeholder="(minimum 6 characters)" ngModel [(ngModel)]="address.address">
+  </div>
+  <div class="mb-3">
+    <label for="card" class="form-label">Credit cart number</label>
+    <input id="card" name="cardNo" class="form-control" type="text" minlength="16" maxlength="16" [maxLength]="16"
+           [minLength]="16" required
+           placeholder="(16 digit card number)" ngModel [(ngModel)]="address.cardNumber">
+  </div>
+  <p>We will never share your payment information with anyone else.</p>
+  <p style="color: red;" *ngIf="addressForm.invalid">Please fill in required values as specified to be able to submit
+    the form.</p>
+  <br>
+  <button type="submit" class="btn btn-primary" [disabled]="addressForm.invalid">Submit</button>
+</form>

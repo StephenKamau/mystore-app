@@ -1,27 +1,32 @@
-<div *ngIf="cart.cartItems.length>0" class="cart-panel">
-  <div class="cart-container">
-    <div *ngFor="let cartItem of cart.cartItems" class="cart-item-details">
-      <img [src]="cartItem.product.url" alt="{{cartItem.product.name}}">
-      <p>{{cartItem.product.name}}</p>
-      <p>{{cartItem.product.price | currency}}</p>
-      <form (ngSubmit)="updateCart(cartItem)">
-        <input class="number-input" name="quantity" required [(ngModel)]="quantity">
-        <br>
-        <button type="submit" class="btn btn-primary">Add to Cart</button>
-      </form>
+<div class="container m-2">
+  <div *ngIf="cartItems.length>0" class="row">
+    <div class="col-auto">
+      <div *ngFor="let cartItem of cartItems" class="row mb-5 border-bottom pb-5">
+        <div class="col-auto">
+          <img [src]="cartItem.product.url" alt="{{cartItem.product.name}}">
+        </div>
+        <div class="col-auto">
+          <p>{{cartItem.product.name}}</p>
+          <p>{{cartItem.product.price | currency}}</p>
+          <div>
+            <input type="number" class="number-input form-control" name="quantity" required
+                   (ngModelChange)="updateCartEvent($event,cartItem)" [(ngModel)]="cartItem.quantity" ngModel>
+            <br>
+          </div>
+        </div>
+      </div>
     </div>
-    <div>
-      <form>
-        <input>
-        <input>
-        <input>
-        <br>
-        <button type="submit" class="btn btn-primary">Add to Cart</button>
-      </form>
+    <div class="col-6 ms-5">
+      <div class="p-2 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+          <h1 class="display-5 fw-bold">Total: {{total|currency}}</h1>
+        </div>
+      </div>
+      <app-address-form (submit)="submit($event)"></app-address-form>
     </div>
   </div>
 </div>
-<div *ngIf="!(cart.cartItems.length>0)" class="empty-cart-message">
+<div *ngIf="!(cartItems.length>0)" class="empty-cart-message">
   <p>Your cart is empty </p>
   <br>
   <a routerLink="/" class="back-link">Start shopping</a>

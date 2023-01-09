@@ -20,6 +20,7 @@ export class ProductListComponent implements OnInit {
   }
 
   addToCart(cartItem: CartItem): void {
+    cartItem.quantity = parseInt(String(cartItem.quantity));
     this.cartService.add(cartItem);
     alert(`${cartItem.product.name} added to cart`);
   }

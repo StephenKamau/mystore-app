@@ -8,7 +8,10 @@ import {ConfirmationComponent} from "./components/confirmation/confirmation.comp
 const routes: Routes = [{path: '', component: ProductListComponent}, {
   path: 'detail',
   component: ProductItemDetailComponent
-}, {path: 'cart', component: CartComponent}, {path: 'success', component: ConfirmationComponent}];
+}, {path: 'cart', component: CartComponent}, {path: 'success', component: ConfirmationComponent}, {
+  path: 'confirmation',
+  component: ConfirmationComponent
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

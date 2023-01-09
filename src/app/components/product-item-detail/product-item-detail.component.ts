@@ -22,7 +22,7 @@ export class ProductItemDetailComponent implements OnInit {
   }
 
   addToCart(product: Product): void {
-    this.cartService.add({quantity: this.quantity, product});
+    this.cartService.add({quantity: parseInt(String(this.quantity)), product});
     alert(`${product.name} added to cart`);
   }
 }

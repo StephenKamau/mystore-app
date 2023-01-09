@@ -12,6 +12,7 @@ import { HeaderComponent } from './layout/header/header.component';
 import {HttpClientModule} from "@angular/common/http";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {FormsModule} from "@angular/forms";
+import { AddressFormComponent } from './components/address-form/address-form.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {FormsModule} from "@angular/forms";
     ProductItemComponent,
     ProductItemDetailComponent,
     ProductListComponent,
-    HeaderComponent
+    HeaderComponent,
+    AddressFormComponent
   ],
   imports: [
     BrowserModule,
